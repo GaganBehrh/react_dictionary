@@ -2,3 +2,14 @@
   display: block;
   margin: auto;
 }
+input {
+  display: block;
+  margin: auto;
+}
+footer{
+    text-align: center;
+}
+.inputbox {
+  padding: 10px;
+  width: 325px;
+}
