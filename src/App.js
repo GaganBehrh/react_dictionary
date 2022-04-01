@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Result from "./Result";
 import logo from "./logo.png";
 import "./App.css";
 
 function App() {
   let [keyword, setKeyword] = useState("");
-
+  let [result, setResult] = useState({});
   function handlechange(event) {
     event.preventDefault();
     setKeyword(event.target.value);
@@ -14,6 +15,7 @@ function App() {
 
   function handleResponse(response) {
     console.log(response.data);
+    setResult(response.data);
   }
 
   function Search(event) {
@@ -29,7 +31,9 @@ function App() {
         <img src={logo} className="img-logo" alt="Shecodes logo" />
         <form className="searchengine" onSubmit={Search}>
           <input className="inputbox" type="search" onChange={handlechange} />
+          <Result result={result} />
         </form>
+
         <footer>Coded by Gagi Behrh</footer>
       </header>
     </div>
