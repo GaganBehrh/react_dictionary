@@ -1,18 +1,28 @@
 import React, { useState } from "react";
+import axios from "axios";
 import logo from "./logo.png";
 import "./App.css";
 
 function App() {
   let [keyword, setKeyword] = useState("");
+
   function handlechange(event) {
     event.preventDefault();
     setKeyword(event.target.value);
     console.log(event.target.value);
   }
+
+  function handleResponse(response) {
+    console.log(response.data);
+  }
+
   function Search(event) {
     event.preventDefault();
     alert("Searching");
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
+    axios.get(apiUrl).then(handleResponse);
   }
+
   return (
     <div className="App">
       <header className="App-header">
