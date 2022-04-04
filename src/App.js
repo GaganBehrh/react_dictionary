@@ -6,7 +6,8 @@ import "./App.css";
 
 function App() {
   let [keyword, setKeyword] = useState("");
-  let [result, setResult] = useState({});
+  let [result, setResult] = useState();
+
   function handlechange(event) {
     event.preventDefault();
     setKeyword(event.target.value);
@@ -22,6 +23,7 @@ function App() {
     event.preventDefault();
     alert("Searching");
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
+    console.log(apiUrl);
     axios.get(apiUrl).then(handleResponse);
   }
 
@@ -31,7 +33,7 @@ function App() {
         <img src={logo} className="img-logo" alt="Shecodes logo" />
         <form className="searchengine" onSubmit={Search}>
           <input className="inputbox" type="search" onChange={handlechange} />
-          <Result result={result} />
+          {result && <Result result={result} />}
         </form>
 
         <footer>Coded by Gagi Behrh</footer>
